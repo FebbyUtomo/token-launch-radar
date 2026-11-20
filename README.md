@@ -1,6 +1,6 @@
-# Token Radar — model radar-2
+# Token Radar: model radar-2
 
-A token launch radar: it reads a sealed snapshot of every protocol DefiLlama
+A token launch radar. It reads a sealed snapshot of every protocol DefiLlama
 tracks, ranks the protocols that still record no token by what their launch
 would be worth, and shows a dashboard with the board, a detail view for every
 protocol, and the steps to farm it. An entry for the make.fun bounty
@@ -8,7 +8,7 @@ protocol, and the steps to farm it. An entry for the make.fun bounty
 
 ## The model (radar-2)
 
-Implied value follows only from the snapshot's own figures, in four parts:
+Implied value comes from the snapshot's own figures, in four parts:
 
 ```
 sector multiple = median market-cap-to-TVL of the live-token protocols in the
@@ -25,13 +25,14 @@ implied         = round(base x growth x maturity)
 
 A lending protocol is scored against lending tokens, a DEX against DEX
 tokens, and a category with no live-token history against the whole market.
-No protocol name is special-cased. The dashboard prints the calibration
-table so any reader can check the multiple each row was given, and each
-protocol's detail view shows its own four parts.
+The rule is the same for every protocol. The dashboard prints the
+calibration table, so any reader can check the multiple each row was given.
+Each protocol's detail view shows its own four parts.
 
 The board covers all 40 watchlist protocols (TVL ≥ $50M, no token on
-record) plus the 186 pre-token protocols below the floor with the most TVL —
-226 rows. Live-token protocols are set aside with their market caps shown.
+record) plus the 186 pre-token protocols below the floor with the most TVL,
+226 rows in total. Live-token protocols are set aside with their market
+caps shown.
 
 ## Run it
 
@@ -45,17 +46,17 @@ Outside the grader's container, set `MAKEFUN_OUTPUT_DIR`:
 mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts --input ../input/snapshot.json
 ```
 
-Node 22.18 or later, standard library only, no install. Writes
-`board.json`, `data.js`, `dashboard/`, `screenshots/` and `dossier.json`
+Needs Node 22.18 or later, standard library only, nothing to install. It
+writes `board.json`, `data.js`, `dashboard/`, `screenshots/` and `dossier.json`
 to the output directory.
 
 ## Layout
 
-- `main.ts` — entrypoint: reads the snapshot, scores the board, writes the output
-- `lib/model.ts` — the radar-2 model, the farm plans, the snapshot parser
-- `vendor/makefun-board.ts` — make.fun's dossier library, copied byte-for-byte from the kit
-- `dashboard/` — the static page (index.html, app.css, app.js), no network
-- `screenshots/` — the three screenshots: the board, a detail view, a filtered view
+- `main.ts`: entrypoint that reads the snapshot, scores the board, and writes the output
+- `lib/model.ts`: the radar-2 model, the farm plans, and the snapshot parser
+- `vendor/makefun-board.ts`: make.fun's dossier library, copied byte-for-byte from the kit
+- `dashboard/`: the static page (index.html, app.css, app.js), no network
+- `screenshots/`: the three screenshots (the board, a detail view, a filtered view)
 
 ## License
 
