@@ -14,7 +14,7 @@ Implied value follows only from the snapshot's own figures, in four parts:
 sector multiple = median market-cap-to-TVL of the live-token protocols in the
                   same category, computed from this snapshot at run time.
                   A category with fewer than 4 live tokens falls back to the
-                  global median (0.205 on this snapshot). Every multiple is
+                  global median (0.2138 on this snapshot). Every multiple is
                   clamped to 0.05–1.50 so a thin category cannot hand a
                   protocol a hundred-fold multiple.
 base            = tvl_usd x sector multiple
@@ -30,8 +30,8 @@ table so any reader can check the multiple each row was given, and each
 protocol's detail view shows its own four parts.
 
 The board covers all 40 watchlist protocols (TVL ≥ $50M, no token on
-record) plus the 200 pre-token protocols below the floor with the most TVL —
-240 rows. Live-token protocols are set aside with their market caps shown.
+record) plus the 186 pre-token protocols below the floor with the most TVL —
+226 rows. Live-token protocols are set aside with their market caps shown.
 
 ## Run it
 
